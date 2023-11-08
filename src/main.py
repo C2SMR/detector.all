@@ -87,8 +87,8 @@ class Main:
                         self.api.add_data_city(self.detector.get_nb_beach(),
                                                self.detector.get_nb_sea(),
                                                self.detector.get_visibility()),
-                # self.api.add_picture_alert_or_moment(
-                #    FOLDER_PICTURE + self.city + '.png')
+                self.api.add_picture_alert_or_moment(
+                    FOLDER_PICTURE + self.city + '.png')
 
 
 if __name__ == '__main__':
