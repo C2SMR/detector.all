@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+
+  detector:
+    container_name: detector
+    build:
+      context: .
+    environment:
+      ROBOFLOW_VERSION : ${ROBOFLOW_VERSION}
+      RASPBERRY_KEY: ${RASPBERRY_KEY}
+    volumes:
+      - ./src/pictures:/app/pictures
+      - ./api:/python-docker
