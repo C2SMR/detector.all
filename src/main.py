@@ -29,6 +29,12 @@ class Main:
         self.rf = Roboflow(api_key=API_KEY_ROBOFLOW)
         self.project = self.rf.workspace().project(PROJECT_WORKSPACE_ROBOFLOW)
         self.model = self.project.version(int(sys.argv[1])).model
+        self.OTHER_PROJECT_ROBOFLOW: list = [
+            Roboflow(api_key="rBzJE5DXKnwjcrNDnOxw").workspace()
+            .project("drowning-detection-oxcyt")
+            .version(1).model
+        ]
+
         self.api_key: str = sys.argv[2]
         self.sensors: Navigation = Navigation()
         self.run()
@@ -51,6 +57,20 @@ class Main:
                            confidence=40,
                            overlap=30).save(FOLDER_PICTURE +
                                             self.city + '.png')
+
+        for project in self.OTHER_PROJECT_ROBOFLOW:
+            prediction = project.predict(FOLDER_PICTURE +
+                                         self.city + '.png',
+                                         confidence=40,
+                                         overlap=30).json()
+            for pred in prediction['predictions']:
+                self.actual_data_predict_picture['predictions'].append(pred)
+
+            project.predict(FOLDER_PICTURE +
+                            self.city + '.png',
+                            confidence=40,
+                            overlap=30).save(FOLDER_PICTURE +
+                                             self.city + '.png')
 
     def set_value_for_city(self, index):
         self.city: str = CITY[index][0]
