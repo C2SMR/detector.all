@@ -17,7 +17,6 @@ class API:
                 "color": color,
                 "city.py": self.city
             })
-            print("change flag :)")
         except Exception:
             print(Exception)
 
@@ -49,7 +48,6 @@ class API:
                 "message": message,
                 "city.py": self.city
             })
-            print("alert send :)")
         except Exception:
             print(f"error : {Exception}")
 
@@ -71,5 +69,5 @@ class API:
         requests.post(self.url + "/add_picture_alert_or_moment", json={
             "key": self.RASPBERRY_KEY,
         }, files={
-            {'file': open(path_file, 'rb')}
+            'file': open(path_file, 'rb')
         })

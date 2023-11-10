@@ -18,10 +18,10 @@ class Detector:
     def get_visibility(self) -> int:
         for data in self.data_picture["predictions"]:
             if data["class"] == "sea":
-                width_sea = data["width"]
-                height_sea = data["height"]
-                width_picture = self.data_picture["image"]["width"]
-                height_picture = self.data_picture["image"]["height"]
+                width_sea: int = int(data["width"])
+                height_sea: int = int(data["height"])
+                width_picture: int = int(self.data_picture["image"]["width"])
+                height_picture: int = int(self.data_picture["image"]["height"])
                 return int(width_sea * height_sea /
                            width_picture * height_picture)
         return -1

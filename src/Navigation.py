@@ -1,5 +1,6 @@
-import undetected_chromedriver as uc
 import time
+
+import undetected_chromedriver as uc
 
 
 class Navigation:
@@ -21,11 +22,15 @@ class Navigation:
         self.driver.execute_script('document.location.reload()')
 
     def full_screen(self):
-        time.sleep(2)
         try:
+            time.sleep(10)
+            self.driver.execute_script(
+                "document.querySelector('#movie_player').click()"
+            )
             self.driver.execute_script(
                 "document.querySelector('.ytp-fullscreen-button')"
                 ".click()")
+            print("full screen")
         except Exception:
             print("Error during fullscreen")
 
