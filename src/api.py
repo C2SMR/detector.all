@@ -17,7 +17,6 @@ class API:
                 "color": color,
                 "city.py": self.city
             })
-            print("change flag :)")
         except Exception:
             print(Exception)
 
@@ -49,7 +48,6 @@ class API:
                 "message": message,
                 "city.py": self.city
             })
-            print("alert send :)")
         except Exception:
             print(f"error : {Exception}")
 
