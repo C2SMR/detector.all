@@ -13,6 +13,7 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
 
+
 WORKDIR /app
 COPY src /app
 RUN pip install --upgrade pip
