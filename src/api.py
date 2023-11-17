@@ -15,7 +15,7 @@ class API:
             requests.post(self.url + "/set_flag", json={
                 "key": self.RASPBERRY_KEY,
                 "color": color,
-                "city.py": self.city
+                "city": self.city
             })
         except Exception:
             print(Exception)
@@ -25,13 +25,13 @@ class API:
             "key": self.RASPBERRY_KEY,
             "nb_beach": nb_beach,
             "nb_sea": nb_sea,
-            "city.py": self.city
+            "city": self.city
         })
 
     def delete_alert_by_city(self):
         requests.post(self.url + "/delete_alert_by_city", json={
             "key": self.RASPBERRY_KEY,
-            "city.py": self.city
+            "city": self.city
         })
         self.add_alert(0, "Plage surveillée")
 
@@ -42,19 +42,21 @@ class API:
         :return:
         """
         try:
-            requests.post(self.url + "/add_alert", json={
+            print(f"add alert : {message}")
+            res = requests.post(self.url + "/add_alert", json={
                 "key": self.RASPBERRY_KEY,
                 "color": color,
                 "message": message,
-                "city.py": self.city
+                "city": self.city
             })
+            print(res)
         except Exception:
             print(f"error : {Exception}")
 
     def add_data_city(self, nb_beach: int, nb_sea: int, cam_visibility: int):
         requests.post(self.url + "/add_data_city", json={
             "key": self.RASPBERRY_KEY,
-            "city.py": self.city,
+            "city": self.city,
             "nb_beach": nb_beach,
             "nb_sea": nb_sea,
             "precipitation": self.weather.get_precipitation(),

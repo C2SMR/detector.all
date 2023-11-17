@@ -23,13 +23,15 @@ class Navigation:
 
     def full_screen(self):
         try:
-            time.sleep(10)
+            time.sleep(30)
             self.driver.execute_script(
-                "document.querySelector('#movie_player').click()"
+                "document.querySelector('#movie_player').playVideo()"
             )
+            time.sleep(30)
             self.driver.execute_script(
                 "document.querySelector('.ytp-fullscreen-button')"
                 ".click()")
+            time.sleep(4)
             print("full screen")
         except Exception:
             print("Error during fullscreen")
