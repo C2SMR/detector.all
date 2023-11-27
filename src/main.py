@@ -83,7 +83,7 @@ class Main:
 
             for i in range(len(CITY)):
                 self.set_value_for_city(i)
-
+                print("n")
                 self.api: API = API(self.city, self.api_key,
                                     self.latitude, self.longitude)
                 self.sensors.run(self.city, self.url)
