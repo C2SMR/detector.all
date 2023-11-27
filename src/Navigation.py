@@ -6,11 +6,6 @@ import undetected_chromedriver as uc
 class Navigation:
     def __init__(self):
         self.option = uc.ChromeOptions()
-        self.option.add_argument("--incognito")
-        self.option.add_argument('--disable-popup-blocking')
-        self.option.add_argument("--headless")
-        self.option.add_argument('--disable-dev-shm-usage')
-        self.option.add_argument('--no-sandbox')
         self.driver = uc.Chrome(options=self.option)
         self.accept_cookie()
 
@@ -23,14 +18,10 @@ class Navigation:
 
     def full_screen(self):
         try:
-            time.sleep(30)
+            time.sleep(10)
             self.driver.execute_script(
                 "document.querySelector('#movie_player').playVideo()"
             )
-            time.sleep(30)
-            self.driver.execute_script(
-                "document.querySelector('.ytp-fullscreen-button')"
-                ".click()")
             time.sleep(4)
             print("full screen")
         except Exception:
